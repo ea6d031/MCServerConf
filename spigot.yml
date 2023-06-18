@@ -94,7 +94,7 @@ players:
 world-settings:
   # 默认设置
   default:
-    是否在旧版本不含y<0的世界里生成新的y<0区块
+    # 是否在旧版本不含y<0的世界里生成新的y<0区块
     below-zero-generation-in-existing-chunks: true
     # 生长速度百分比
     growth:
@@ -182,7 +182,7 @@ world-settings:
         monsters-max-per-tick: 8
         # 每多少随机刻唤醒一次
         monsters-every: 400
-        每次唤醒最长持续多久
+        # 每次唤醒最长持续多久
         monsters-for: 100
         # 每次最多唤醒多少村民
         villagers-max-per-tick: 4
