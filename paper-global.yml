@@ -1,0 +1,237 @@
+# 这是 Paper 的全局配置文件。 
+# 如您所见，有很多可以配置的选项。某些选项可能会影响游戏玩法，因此请谨慎使用，并确保在配置之前了解每个选项的作用。
+# 如果您在配置方面需要帮助或有任何与 Paper 相关的问题，请加入我们的 Discord 频道或查看文档页面。
+# 世界配置选项已迁移至每个世界文件夹。这些文件名为 paper-world.yml
+# 帮助文档: https://docs.papermc.io/
+# Discord: https://discord.gg/papermc
+# 官方网站: https://papermc.io/
+# 译自https://docs.papermc.io/paper/reference/global-configuration
+
+# 配置文件版本信息，请勿修改
+_version: 28
+# 区块加载
+chunk-loading:
+  # 自动为每个客户端的设置适配视距
+  autoconfig-send-distance: true
+  # 是否优先加载玩家前方的区块
+  # 注:由于客户端特性，不建议启用
+  enable-frustum-priority: false
+  # 服务器每秒加载的最大区块数
+  global-max-chunk-load-rate: -1.0
+  # 服务器每秒发送的最大区块数
+  global-max-chunk-send-rate: -1.0
+  # 服务器同时加载的最大区块数
+  global-max-concurrent-loads: 500.0
+  # 队列中同时发送的最大区块数
+  max-concurrent-sends: 2
+  # 玩家周围加载的最少区块半径，实际数值+1
+  min-load-radius: 2
+  # 单个玩家每秒加载的最大区块数
+  player-max-chunk-load-rate: -1.0
+  # 单个玩家同时加载的最大区块数
+  player-max-concurrent-loads: 20.0
+  # 单个玩家每秒接收的最大区块数
+  target-player-chunk-send-rate: 100.0
+# 区块系统
+chunk-system:
+  # 区块生成并行性
+  gen-parallelism: default
+  # I/O线程数
+  io-threads: -1
+  # Worker线程数
+  worker-threads: -1
+# 碰撞箱
+collisions:
+  # 启用玩家碰撞箱
+  enable-player-collisions: true
+  # 发送玩家的精确位置来使玩家与矿车/船的碰撞更精确
+  send-full-pos-for-hard-colliding-entities: true
+# 命令
+commands:
+  # 防止实体标签建议作用于目标选择器
+  fix-target-selector-tag-completion: true
+  # 在没有自动补全支持的时候返回玩家列表
+  suggest-player-names-when-null-tab-completions: true
+  # /time是否作用于所有世界
+  time-command-affects-all-worlds: false
+# 控制台
+console:
+  # 在服务器控制台中启用 Mojang 的 Brigadier 命令补全
+  enable-brigadier-completions: true
+  # 在服务器控制台中启用 Mojang 的 Brigadier 高亮显示
+  enable-brigadier-highlighting: true
+  # 服务器控制台是否拥有所有权限
+  has-all-permissions: false
+# 物品有效性
+item-validation:
+  # 书本
+  book:
+    # 作者最大长度
+    author: 8192
+    # 书本最大长度
+    page: 16384
+    # 标题最大长度
+    title: 8192
+  # 书大小
+  book-size:
+    # 每页最多有多少字节
+    page-max: 2560
+    # 与第一页大小的乘数
+    total-multiplier: 0.98
+  # 物品显示名称的最大长度
+  display-name: 8192
+  # 物品附加信息的最大长度
+  lore-line: 8192
+  # 是否解析书中的选择器
+  # 注:创造玩家可以利用该功能崩服
+  resolve-selectors-in-books: false
+# 登录设置
+logging:
+  # 登录时，是否将Spigot堆栈重映射至Mojang Mapping
+  deobfuscate-stacktraces: true
+  # 在日志里记录登录玩家的IP
+  log-player-ip-addresses: true
+  # 是否应用 RGB 代码记录登录名的颜色
+  use-rgb-for-named-text-colors: true
+# 消息
+messages:
+  # 踢出
+  kick:
+    # 验证服务器不可用
+    authentication-servers-down: <lang:multiplayer.disconnect.authservers_down>
+    # 连接被限制（见bukkit.yml）
+    connection-throttle: 你连接的太频繁了! 请在重连前等待一会.
+    # 因飞行检测被踢出
+    flying-player: <lang:multiplayer.disconnect.flying>
+    # 因飞行检测被踢出
+    flying-vehicle: <lang:multiplayer.disconnect.flying>
+  # 没有使用某指令的权限
+  no-permission: <red>对不起，您没有执行该命令的权限.如果您认为这是错的，请联系服务器管理员.
+  # 退出服务器消息中是否使用可能被其他插件影响的最终显示ID
+  use-display-name-in-quit-message: false
+# 杂项
+misc:
+  # 聊天线程
+  chat-threads:
+    # 聊天线程最小大小
+    chat-executor-core-size: -1
+    # 聊天线程最大大小
+    chat-executor-max-size: -1
+  # 修复客户端与服务端实体位置失去同步
+  fix-entity-position-desync: true
+  # 是否尝试在服务器卡顿期间不让方块破坏出现滞后
+  lag-compensate-block-breaking: true
+  # 在加载插件之前加载permission.yml
+  load-permissions-yml-before-plugins: true
+  # 每随机刻最多允许多少玩家加入
+  max-joins-per-tick: 5
+  # 生成区块缓存文件的最大大小
+  region-file-cache-size: 256
+  # 严格检查成就达成的维度
+  strict-advancement-dimension-check: false
+  # 使用 Paper 的运气计算公式，可以将运气用于更多方面
+  use-alternative-luck-formula: false
+  # 使用自定义生物生成规则
+  use-dimension-type-for-custom-spawners: false
+# 发包限制
+packet-limiter:
+  # 所有数据包
+  all-packets:
+    # 超出包限制的操作，可以填写 DROP 以丢弃数据包
+    action: KICK
+    # 最大数据包速率判定间隔，以秒计
+    interval: 7.0
+    # 间隔内允许发送的最大数据包量
+    max-packet-rate: 500.0
+  # 踢出的信息
+  kick-message: <red><lang:disconnect.exceeded_packet_rate>
+  # 覆盖设置
+  overrides:
+    # 对命名相同的数据包的限制
+    ServerboundPlaceRecipePacket:
+      # 超出包限制的操作
+      action: DROP
+      # 判定间隔
+      interval: 4.0
+      # 最大包速率
+      max-packet-rate: 5.0
+# 玩家数据保存
+player-auto-save:
+  # 每随机刻最多保存多少玩家，-1为10或20
+  max-per-tick: -1
+  # 频率，以随机刻计，-1为使用bukkit.yml中的数值
+  rate: -1
+# 代理设置
+proxies:
+  # BC类代理配置
+  bungee-cord:
+    # 代理的正版验证
+    online-mode: true
+  # 服务端是否处理 HAProxy 类代理信息
+  proxy-protocol: false
+  # Velocity 配置
+  velocity:
+    # 是否启用
+    enabled: false
+    # 代理的正版验证
+    online-mode: false
+    # 密钥，填入单引号之间
+    secret: ''
+# 计分板
+scoreboards:
+  # 自动删除空白计分板项目以加快登录速度
+  save-empty-scoreboard-teams: false
+  # 更好的计分板，可能导致问题和性能下降
+  track-plugin-scoreboards: false
+# 防垃圾数据包设置
+spam-limiter:
+  # 入数据包的最大量，超出会被略过
+  incoming-packet-threshold: 300
+  # 合成一次记录多少合成数据包
+  recipe-spam-increment: 1
+  # 短时间内合成数据包超过该数将被踢出
+  recipe-spam-limit: 20
+  # 发送一次tab列表记录多少tab数据包
+  tab-spam-increment: 1
+  # 短时间内tab数据包超过该数将被踢出
+  tab-spam-limit: 500
+# timings设置(Purpur默认使用更好的Spark)
+timings:
+  # 是否启用
+  enabled: true
+  # 配置哪些条目要在 timings 中隐藏
+  hidden-config-entries:
+  - database
+  - proxies.velocity.secret
+  # timings中各点间隔，以秒计
+  history-interval: 300
+  # 单个报告的最大数据量
+  # 注:不建议修改，过长的报告会被 timings 服务器拒绝
+  history-length: 3600
+  # 报告中服务器的名称
+  server-name: Unknown Server
+  # 是否隐藏服务器名称
+  server-name-privacy: false
+  # timings 服务器地址
+  url: https://timings.aikar.co/
+  # 指示 timings 记录更详细的信息
+  verbose: true
+# 不受支持的设置
+unsupported-settings:
+  # 允许砂轮修复物品
+  allow-grindstone-overstacking: false
+  # 允许制作无头活塞
+  allow-headless-pistons: false
+  # 允许破坏无法破坏的方块
+  allow-permanent-block-break-exploits: false
+  # 允许活塞复制方块(tnt,地毯,铁轨)
+  allow-piston-duplication: false
+  # 是否拒绝ID包含非ASCII字符的玩家进入
+  # 注:建议开启，id中包含中文等会导致指令/插件出现问题
+  perform-username-validation: true
+# 服务器监视器
+watchdog:
+  # 在服务器无响应多久后打印线程转储，以毫秒计
+  early-warning-delay: 10000
+  # 每隔多久打印一次线程转储，以毫秒计
+  early-warning-every: 5000

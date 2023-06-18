@@ -1,0 +1,53 @@
+# Pufferfish 配置文件
+# *广告* 查看 Pufferfish Host 以获得最佳性能的服务器托管: https://pufferfish.host
+# 加入我们的 Discord 频道以获得支持: https://discord.gg/reZw4vQV9H
+# 在 https://ci.pufferfish.host/job/Pufferfish下载最新构建
+# 译自https://docs.pufferfish.host/setup/pufferfish-fork-configuration/
+
+# 信息
+info:
+  # 配置文件版本信息，请勿修改
+  version: '1.0'
+# Sentry DSN用于改进错误日志的记录，留空以禁用
+# 如果希望使用，请访问 https://sentry.io/
+sentry-dsn: ''
+# 书是否可被写入
+# 该选项可使用 pufferfish.usebooks 权限节点为每个玩家精确控制
+enable-books: true
+# 以一种看起来正常的方式通过选择性的跳过来优化窒息检查。
+# 这应该在大多数服务器上启用。但如果不希望和原版产生偏差，可以禁用该选项。
+enable-suffocation-optimization: true
+# 是否启用异步怪物生成
+# 在具有许多实体的服务器上，这可以将性能提高多达 15%。您必须将 Paper 的 per-player-mob-spawns 设置设置为 true 才能正常工作。 
+# 注:这实际上并没有进行异步怪物生成(那将是非常不安全的)。这只是减少了一些怪物生成所需的复杂的计算。
+enable-async-mob-spawning: true
+# 投掷物优化设置
+projectile:
+  # 控制每个随机刻中多少区块可以被投掷物同步加载
+  max-loads-per-tick: 10
+  # 控制一个投掷物在被自动移除之前最多允许加载多少个区块
+  max-loads-per-projectile: 10
+# 当实体远离玩家时，优化它们的AI
+dab:
+  # 是否启用
+  enabled: false
+  # 此值决定了一个实体必须离玩家有多远才会被影响
+  start-distance: 12
+  # 此值定义了在距离远的实体获取仇恨目标的频率，以随机刻计。20 = 1秒
+  max-tick-freq: 20
+  # 此值定义了优化远处的实体计算随机刻频率。频率公式:“频率 = 实体离玩家距离的平方÷2的该值次方”如果您希望更远的实体减少频率，请使用 7。如果您希望更远的实体更频繁地加载，请尝试 9。
+  activation-dist-mod: 8
+  # 不参与优化的实体列表
+  blacklisted-entities: []
+# 实体的最大存在时间。如果一个实体在这个列表中并且它的存在时间超过了限制，那么它将被删除。将值设置为 -1 禁用此功能。(时间以随机刻计)
+entity_timeouts:
+  SNOWBALL: -1 # 雪球
+  LLAMA_SPIT: -1 # 羊驼的口水
+# 限制实体非活动时间中的目标选择器。这可以将性能提高几个百分点，但对游戏玩法有轻微的影响。
+inactive-goal-selector-throttle: false
+# 杂项
+misc:
+  # 禁用方法分析器
+  disable-method-profiler: true
+  # 禁用乱序聊天
+  disable-out-of-order-chat: false

@@ -1,0 +1,3224 @@
+﻿# 这里是 Purpur 的主要配置文件。
+# 如您所见，有极多可以配置的选项。某些选项可能会影响游戏玩法，因此请谨慎使用，并确保在配置之前了解每个选项的作用。
+# 如果您在配置方面需要帮助或有任何与 Purpur 相关的问题，请加入我们的 Discord 频道或查看文档页面。
+# 官方网站: https://purpurmc.org 
+# 帮助文档: https://purpurmc.org/docs 
+# Discord: https://purpurmc.org/discord
+# 译自https://purpurmc.org/docs/Configuration
+
+# 服务器是否应该在启动时将所有配置值转储到日志中
+verbose: false
+# 设置
+settings:
+  # 消息设置
+  messages:
+    # 不能骑在怪物身上
+    cannot-ride-mob: <red>你不能骑着那个怪物！
+    # 当玩家挂机时广播
+    afk-broadcast-away: <yellow><italic>%s 正在挂机
+    # 当玩家离开挂机时广播
+    afk-broadcast-back: <yellow><italic>%s 回来了
+    # 挂机玩家的Tab列表前缀
+    afk-tab-list-prefix: '[AFK] '
+    # 挂机玩家的Tab列表后缀
+    afk-tab-list-suffix: ''
+    # 当某人使用“/credits”的消息
+    credits-command-output: <green>为 %s 展示了制作名单
+    # 当某人使用“/demo”的消息
+    demo-command-output: <green>为 %s 展示了演示页面
+    # 当某人使用“/ping <玩家名>”的消息
+    ping-command-output: <green>%s 的延迟有 %sms
+    # 当某人使用“/ram”的消息
+    ram-command-output: '<green>服务器内存使用情况: <used>/<xmx> (<percent>)'
+    # 当某人使用“/rambar”的消息
+    rambar-command-output: <green> 内存条已经为 <target> <onoff>
+    # 当某人使用“/tpsbar”的消息
+    tpsbar-command-output: <green>TPS条已经为 <target> <onoff>
+    # 当有人试图拿着剪刀跑时显示的消息
+    dont-run-with-scissors: <red><italic>别拿着剪刀跑!
+    # 当某人使用“/uptime”的消息
+    uptime-command-output: <green>服务器正常工作时间为 <uptime>
+    # 验证用户名失败踢出消息
+    unverified-username: default
+    # 睡觉跳过夜晚的消息，default由客户端控制，留空禁用
+    sleep-skipping-night: default
+    # 床上入睡玩家百分比的消息，可使用占位符<count>代表现在入睡的玩家，<total>代表总玩家
+    sleeping-players-percent: default
+    # 死亡消息
+    death-message:
+      # 死于带着剪刀跑
+      run-with-scissors: <player> 滑倒在剪刀上
+      # 死于站在切石机上
+      stonecutter: <player> 被切成了两半
+  # 广播设置
+  broadcasts:
+    # 成就
+    advancement:
+      # 仅向受影响的玩家广播
+      only-broadcast-to-affected-player: false
+    # 死亡
+    death:
+      # 仅向受影响的玩家广播
+      only-broadcast-to-affected-player: false
+  # 客户端打开调试信息页面或版本不匹配时显示的服务端类型
+  server-mod-name: Purpur
+  # 当服务器滞后时长达到该值后，Purpur将会跟踪某些事件
+  lagging-threshold: 19.0
+  # 更改心跳包机制，使客户端不会因为丢包被踢
+  use-alternate-keepalive: false
+  # 当玩家使用/give但背包已满时，不爆出物品
+  disable-give-dropping: false
+  # 命令
+  command:
+    # 内存条
+    rambar:
+      # 条标题
+      title: <gray>内存<yellow>:</yellow> <used>/<xmx> (<percent>)
+      # 条覆盖层，可用值如下，其它两种条同理
+      # -PROGRESS 进度条
+      # -NOTCHED_6 分成六格
+      # -NOTCHED_10 分成十格
+      # -NOTCHED_12 分成12格
+      # -NOTCHED_20 分成20格
+      overlay: NOTCHED_20
+      # 进度条的颜色，可用值如下，其它条同理
+      # -BLUE 蓝色
+      # -GREEN 绿色
+      # -PINK 粉色
+      # -PURPLE 紫色
+      # -RED 红色
+      # -WHITE 白色
+      # -YELLOW 黄色
+      progress-color:
+        # 余量正常时
+        good: GREEN
+        # 余量一般时
+        medium: YELLOW
+        # 余量不足时
+        low: RED
+      # 文本的颜色
+      text-color:
+        # 余量正常时
+        good: <gradient:#55ff55:#00aa00><text></gradient>
+        # 余量一般时
+        medium: <gradient:#ffff55:#ffaa00><text></gradient>
+        # 余量不足时
+        low: <gradient:#ff5555:#aa0000><text></gradient>
+      # 更新频率，以随机刻计
+      tick-interval: 20
+    # TPS条
+    tpsbar:
+      # 标题
+      title: <gray>TPS<yellow>:</yellow> <tps> MSPT<yellow>:</yellow> <mspt> 延迟<yellow>:</yellow>
+        <ping>ms
+      # 条覆盖层
+      overlay: NOTCHED_20
+      # 填充的模式，可选
+      # -MSPT 运算每随机刻使用的时间
+      # -TPS 每秒运算的随机刻
+      # -PING 延迟
+      fill-mode: MSPT
+      # 条颜色
+      progress-color:
+        # 状态良好
+        good: GREEN
+        # 状态一般
+        medium: YELLOW
+        # 状态差
+        low: RED
+      # 文本颜色
+      text-color:
+        # 状态良好
+        good: <gradient:#55ff55:#00aa00><text></gradient>
+        # 状态一般
+        medium: <gradient:#ffff55:#ffaa00><text></gradient>
+        # 状态差
+        low: <gradient:#ff5555:#aa0000><text></gradient>
+      # 更新频率，以随机刻计
+      tick-interval: 20
+    # 指南针
+    compass:
+      # 标题
+      title: 'S  ·  ◈  ·  ◈  ·  ◈  ·  SW  ·  ◈  ·  ◈  ·  ◈  ·  W  ·  ◈  ·  ◈  ·  ◈  ·  NW  ·  ◈  ·  ◈  ·  ◈  ·  N  ·  ◈  ·  ◈  ·  ◈  ·  NE  ·  ◈  ·  ◈  ·  ◈  ·  E  ·  ◈  ·  ◈  ·  ◈  ·  SE  ·  ◈  ·  ◈  ·  ◈  ·  S  ·  ◈  ·  ◈  ·  ◈  ·  SW  ·  ◈  ·  ◈  ·  ◈  ·  W  ·  ◈  ·  ◈  ·  ◈  ·  NW  ·  ◈  ·  ◈  ·  ◈  ·  N  ·  ◈  ·  ◈  ·  ◈  ·  NE  ·  ◈  ·  ◈  ·  ◈  ·  E  ·  ◈  ·  ◈  ·  ◈  ·  SE  ·  ◈  ·  ◈  ·  ◈  ·  '
+      # 条覆盖层
+      overlay: PROGRESS
+      # 条颜色
+      progress-color: BLUE
+      # 条的填充范围，取值范围从0.0到1.0
+      percent: 1.0
+      # 更新间隔，以随机刻计
+      tick-interval: 5
+    # 游戏模式
+    gamemode:
+      # 需要特定的权限，例如切换至生存模式需要"minecraft.command.gamemode.survival"权限
+      requires-specific-permission: false
+    # 当玩家被隐藏时，从实体选择器中隐藏玩家
+    hide-hidden-players-from-entity-selector: false
+    # 服务器正常工作的时间
+    uptime:
+      # 消息格式
+      format: <days><hours><minutes><seconds>
+      day: '%02d 天, '
+      days: '%02d 天, '
+      hour: '%02d 小时, '
+      hours: '%02d 小时, '
+      minute: '%02d 分钟, '
+      minutes: '%02d 分钟, '
+      second: '%02d 秒'
+      seconds: '%02d 秒'
+  # 方块设置
+  blocks:
+    # 木桶
+    barrel:
+      # 存储空间的行数，可用1-6
+      rows: 3
+    # 末影箱
+    ender_chest:
+      # 末影箱是否有6行
+      six-rows: false
+      # 使用"purpur.enderchest.rows.<数目>"权限管理拥有的行数
+      # 要使用该功能，"six_row"必须为true，所有人默认拥有6行，除非设置权限
+      use-permissions-for-rows: false
+    # 哭泣的黑曜石
+    crying_obsidian:
+      # 是否可以用作地狱传送门框架
+      valid-for-portal-frame: false
+    # 蜂巢
+    beehive:
+      # 居住的最大蜜蜂数
+      max-bees-inside: 3
+    # 铁砧
+    anvil:
+      # 修复成本是否累积
+      cumulative-cost: true
+    # 避雷针
+    lightning_rod:
+      # 作用范围
+      range: 128
+    # 砂轮
+    grindstone:
+      # 忽略的附魔
+      ignored-enchants:
+      - minecraft:binding_curse
+      - minecraft:vanishing_curse
+      # 砂轮是否移除物品属性
+      remove-attributes: false
+      # 砂轮是否移除物品名称和注释文字
+      remove-name-and-lore: false
+    # 洞穴藤蔓
+    cave_vines:
+      # 生长的最大格数
+      max-growth-age: 25
+    # 海带
+    kelp:
+      # 生长的最大格数
+      max-growth-age: 25
+    # 扭曲藤蔓
+    twisting_vines:
+      # 生长的最大格数
+      max-growth-age: 25
+    # 诡异藤蔓
+    weeping_vines:
+      # 生长的最大格数
+      max-growth-age: 25
+    # 禁止蘑菇长大
+    disable-mushroom-updates: false
+    # 禁用音符盒的更新
+    disable-note-block-updates: false
+    # 禁用紫颂植物更新
+    disable-chorus-plant-updates: false
+  # 附魔
+  enchantment:
+    # 允许无限和精修同时出现
+    allow-infinity-and-mending-together: false
+    # 允许弩附无限
+    allow-infinity-on-crossbow: false
+    # 允许剪刀附抢夺
+    allow-looting-on-shears: false
+    # 允许在附魔台和书架之间放置透明方块而不影响附魔等级
+    allow-transparent-blocks-in-enchantment-box: false
+    # 铁砧
+    anvil:
+      # 需要此选项才能使以下不安全的附魔设置工作
+      allow-unsafe-enchants: false
+      # 允许对通常不适用的工具或盔甲施加附魔，例如为镐子附锋利
+      allow-inapplicable-enchants: true
+      # 允许同时使用通常不相容的附魔，例如时运和精准
+      allow-incompatible-enchants: true
+      # 允许附魔超过其最高等级，例如效率V+效率V=效率VI
+      allow-higher-enchants-levels: true
+    # 允许通过指令使附魔超过最高等级
+    allow-unsafe-enchant-command: false
+    # 用short而非byte存储buff等级，使Buff等级最高达到32767级
+    # 注:客户端无法显示高于255的等级
+    clamp-levels: true
+  # 实体
+  entity:
+    # 末影人
+    enderman:
+      # 允许末影人穿过两格高的地方
+      # 注:模型和攻击判定不变
+      short-height: false
+  # 允许在末地灌水
+  allow-water-placement-in-the-end: true
+  # 日志记录
+  logger:
+    # 禁用有关插件使用的API版本过低的警告
+    suppress-init-legacy-material-errors: false
+    # 禁用有关未知属性的警告
+    suppress-ignored-advancement-warnings: false
+    # 禁用尝试加载无法识别的合成配方的警告
+    suppress-unrecognized-recipe-errors: false
+    # 禁用setblock发现目标方块过远的错误
+    suppress-setblock-in-far-chunk-errors: false
+    # 禁用与库加载器相关的警告
+    suppress-library-loader: false
+  # 是否启用TPS追赶功能
+  # 注:该功能使您的服务器在TPS低于20的任何一段时间后都以超过20TPS的速度运行。这是为了让平均TPS尽可能接近20，但它也有自己的副作用，比如玩家在卡顿期间被怪物很快杀死
+  tps-catchup: true
+  # 网络设置
+  network:
+    # 尝试在服务器启动时自动使用UPnP转发端口
+    upnp-port-forwarding: false
+    # 设置为true使paper.yml中max-joins-per-tick的检测粒度从每随机刻变为每秒
+    max-joins-per-second: false
+    # 设置为false以阻止服务器踢出乱序聊天的玩家
+    kick-for-out-of-order-chat: true
+  # 可用于用户名的字符，可通过正则表达式配置
+  username-valid-characters: ^[a-zA-Z0-9_.]*$
+  # 对食物属性进行魔改
+  # 以下为官方举例
+
+  #spider_eye: # 需要修改的食物
+    #nutrition: 2 # 回复的饥饿值
+    #saturation-modifier: 0.8 # 饱和度修饰符，饱和度计算公式为饥饿值×饱和度修饰符×2
+    #is-meat: false # 食物是否可被狼食用
+    #can-always-eat: false # 是否允许在饥饿值满时食用
+    #fast-food: false # 食用该食物需要消耗多长时间(false:1.6s,true:0.8s)
+    #effects: # 在食用时可得到的BUFF(可以有多种效果)
+      #poison: # 需要应用的效果
+        #duration: 100 # 效果持续的时长，以随机刻计
+        #chance: 1.0 # 得到效果的几率，取值范围从0.0-1.0
+        #visible: true # 是否显示粒子效果
+        #amplifier: 1 # 效果的等级
+        #ambient: false # 设置为true以使粒子在屏幕上不那么突兀（如信标效果）
+        #show-icon: true # 在HUD上显示效果图标
+
+  # 如果您需要尝试效果，将上面的字段移入配置项内并修改即可
+  food-properties: {}
+  # 设置为true以修复由NetworkItemSerializeEvent修改的物品
+  fix-network-serialized-items-in-creative: false
+  # 除非插件更改了战利品修饰符，否则防止战利品被当作投掷物造成伤害
+  fix-projectile-looting-transfer: false
+  # 是否将属性值固定
+  clamp-attributes: true
+  # 是否应限制盔甲可以减少的伤害
+  limit-armor: true
+  # 爆炸保护覆盖的范围
+  blast-resistance-overrides: {}
+  # 方块摔落乘数，官方文档暂未添加，参https://github.com/PurpurMC/Purpur/pull/1143
+  block-fall-multipliers:
+    # 干草块
+    minecraft:hay_block:
+      # 受到的伤害倍数
+      damage: 0.2
+    # 棕床
+    minecraft:brown_bed:
+      # 被识别为的摔落距离倍数
+      distance: 0.5
+    # 淡灰床
+    minecraft:light_gray_bed:
+      # 被识别为的摔落距离倍数
+      distance: 0.5
+    # 品红床
+    minecraft:magenta_bed:
+      # 被识别为的摔落距离倍数
+      distance: 0.5
+    # 紫床
+    minecraft:purple_bed:
+      # 被识别为的摔落距离倍数
+      distance: 0.5
+    # 浅蓝床
+    minecraft:light_blue_bed:
+      # 被识别为的摔落距离倍数
+      distance: 0.5
+    # 粉床
+    minecraft:pink_bed:
+      # 被识别为的摔落距离倍数
+      distance: 0.5
+    # 红床
+    minecraft:red_bed:
+      # 被识别为的摔落距离倍数
+      distance: 0.5
+    # 灰床
+    minecraft:gray_bed:
+      # 被识别为的摔落距离倍数
+      distance: 0.5
+    # 青床
+    minecraft:cyan_bed:
+      # 被识别为的摔落距离倍数
+      distance: 0.5
+    # 蓝床
+    minecraft:blue_bed:
+      # 被识别为的摔落距离倍数
+      distance: 0.5
+    # 绿床
+    minecraft:green_bed:
+      # 被识别为的摔落距离倍数
+      distance: 0.5
+    # 橙床
+    minecraft:orange_bed:
+      # 被识别为的摔落距离倍数
+      distance: 0.5
+    # 黑床
+    minecraft:black_bed:
+      # 被识别为的摔落距离倍数
+      distance: 0.5
+    # 黄床
+    minecraft:yellow_bed:
+      # 被识别为的摔落距离倍数
+      distance: 0.5
+    # 黄绿床
+    minecraft:lime_bed:
+      # 被识别为的摔落距离倍数
+      distance: 0.5
+    # 白床
+    minecraft:white_bed:
+      # 被识别为的摔落距离倍数
+      distance: 0.5
+# 配置文件版本信息，请勿修改
+config-version: 32
+# 世界设置
+world-settings:
+  # 默认
+  default:
+    # 设置
+    settings:
+      # 实体
+      entity:
+        # 这是Paper对RNG操作的补丁，Purpur提供了撤销方式，但请注意，这是不稳定的，且会使性能下降
+        shared-random: true
+    # 方块
+    blocks:
+      # 观察者
+      observer:
+        # 禁止观察者使区块运算
+        disable-clock: false
+      # 铁砧
+      anvil:
+        # 允许玩家在铁砧上使用颜色代码
+        # 需要purpur.anvil.color权限
+        allow-colors: false
+        # 允许玩家在铁砧上使用MiniMessage标签
+        # 需要purpur.anvil.minimessage权限
+        use-mini-message: false
+        # 使用铁锭修理一个铁砧花费的锭数
+        iron-ingots-used-for-repair: 0
+        # 使用黑曜石破坏一个铁砧花费的块数
+        obsidian-used-for-damage: 0
+      # 杜鹃花
+      azalea:
+        # 杜鹃花自然长成树木的几率
+        growth-chance: 0.0
+      # 信标
+      beacon:
+        # 效果的半径
+        effect-range:
+          # 1级信标
+          level-1: 20
+          # 2级信标
+          level-2: 30
+          # 3级信标
+          level-3: 40
+          # 4级信标
+          level-4: 50
+        # 允许在有色玻璃覆盖时激活信标效果
+        allow-effects-with-tinted-glass: false
+      # 床
+      bed:
+        # 床是否爆炸，关闭后床仅仅会消失
+        explode: true
+        # 村民睡觉时是否爆炸
+        explode-on-villager-sleep: false
+        # 爆炸等级，TNT为4，闪电苦力怕为6
+        explosion-power: 5.0
+        # 爆炸是否起火
+        explosion-fire: true
+        # 爆炸的效果，以下选项可选
+        # -BLOCK 未知
+        # -DESTORY 摧毁方块
+        # -BREAK 打破方块并掉落
+        # -NONE 不破坏方块
+        explosion-effect: BLOCK
+      # 垂滴叶
+      big_dripleaf:
+        # 倾斜延时，以随机刻计
+        tilt-delay:
+          # 部分倾斜
+          PARTIAL: 10
+          # 不稳定
+          UNSTABLE: 10
+          # 完整
+          FULL: 100
+      # 紫水晶母岩
+      budding_amethyst:
+        # 是否可被精准采集
+        silk-touch: false
+      # 仙人掌
+      cactus:
+        # 是否会被周围的方块干掉
+        breaks-from-solid-neighbors: true
+        # 是否会受骨粉催熟
+        affected-by-bonemeal: false
+      # 甘蔗
+      sugar_cane:
+        # 是否会受骨粉催熟
+        affected-by-bonemeal: false
+      # 地狱疣
+      nether_wart:
+        # 是否会受骨粉催熟
+        affected-by-bonemeal: false
+      # 营火
+      campfire:
+        # 放置时是否点燃
+        lit-when-placed: true
+      # 箱子
+      chest:
+        # 是否在上面有完整方块时可以打开
+        open-with-solid-block-on-top: false
+      # 堆肥桶
+      composter:
+        # 允许通过按住右键大量堆肥
+        sneak-to-bulk-process: false
+      # 珊瑚
+      coral:
+        # 离开水放置后是否死亡
+        die-outside-water: true
+      # 发射器
+      dispenser:
+        # 允许将附有绑定诅咒的东西装备到装甲槽
+        apply-cursed-to-armor-slots: true
+        # 允许放置铁砧
+        place-anvils: false
+      # 门
+      door:
+        # 需要红石才能打开的门
+        requires-redstone: []
+      # 龙蛋
+      dragon_egg:
+        # 是否会传送
+        teleport: true
+      # 末影水晶
+      end-crystal:
+        # 玩家放置的
+        baseless:
+          # 是否会爆炸
+          explode: true
+          # 爆炸的能量
+          explosion-power: 6.0
+          # 是否会起火
+          explosion-fire: false
+          # 爆炸的效果，以下选项可选
+          # -BLOCK 未知
+          # -DESTORY 摧毁方块
+          # -BREAK 打破方块并掉落
+          # -NONE 不破坏方块
+          explosion-effect: BLOCK
+        # 末地生成的
+        base:
+          # 是否会爆炸
+          explode: true
+          # 爆炸的能量
+          explosion-power: 6.0
+          # 是否会起火
+          explosion-fire: false
+          # 爆炸的效果，以下选项可选
+          # -BLOCK 未知
+          # -DESTORY 摧毁方块
+          # -BREAK 打破方块并掉落
+          # -NONE 不破坏方块
+          explosion-effect: BLOCK
+        # 同一命中框容纳的水晶上限，超过该限制会直接爆炸
+        cramming-amount: 0
+      # 耕地
+      farmland:
+        # 是否无视mobGriefing游戏规则不被破坏
+        bypass-mob-griefing: false
+        # 让耕地从其下方的水中湿润
+        gets-moist-from-below: false
+        # 是否允许通过将栅栏或石墙放在耕地下方以阻止其被踩坏
+        use-alpha-farmland: false
+        # 完全禁止耕地被踩坏
+        disable-trampling: false
+        # 只有玩家可以踩坏农田
+        only-players-trample: false
+        # 使缓落等级可以影响到踩坏耕地的高度，例如缓落1会比没有缓落可以从更高一格掉在耕地上而不会踩坏它
+        feather-fall-distance-affects-trampling: false
+        # 踩坏耕地需要掉落的高度
+        # 注:该值与实际有出入，测试得到的数据如下，格式为填写值-实际值
+        # 1.0 -> 1.25
+        # 1.5 -> 1.75
+        # 2.0 -> 2.25
+        # 2.5 -> 2.87
+        # 3.0 -> 3.5
+        # 3.5 -> 4.25
+        # 4.0 -> 4.25
+        # 4.5 -> 5.0
+        # 5.0 -> 5.87
+        # 5.5 -> 5.87
+        # 6.0 -> 6.75
+        trample-height: -1.0
+      # 开花的杜鹃花
+      flowering_azalea:
+        # 长成树的几率
+        growth-chance: 0.0
+      # 熔炉
+      furnace:
+        # 使用熔炉底部的岩浆作为无限燃料
+        use-lava-from-underneath: false
+      # 末影传送门
+      end_portal:
+        # 安全的进行传送，刷沙必须关闭
+        safe-teleporting: true
+      # 浮冰
+      packed_ice:
+        # 允许在其上生成怪物
+        allow-mob-spawns: true
+      # 蓝冰
+      blue_ice:
+        # 允许在其上生成怪物
+        allow-mob-spawns: true
+        # 允许落雪
+        allow-snow-formation: true
+      # 岩浆
+      lava:
+        # 产生无限岩浆需要毗邻的源头数
+        infinite-required-sources: 2
+        # 流速，以随机刻计
+        speed:
+          # 地狱
+          nether: 10
+          # 非地狱
+          not-nether: 30
+      # 活塞
+      piston:
+        # 一个活塞能推的最多方块
+        block-push-limit: 12
+      # 岩浆块
+      magma-block:
+        # 潜行时是否受到伤害
+        damage-when-sneaking: false
+        # 穿着冰霜行者是否受到伤害
+        damage-with-frost-walker: false
+      # 细雪
+      powder_snow:
+        # 是否无视mobGriefing游戏规则不被破坏
+        bypass-mob-griefing: false
+      # 充能铁轨
+      powered-rail:
+        # 充能半径
+        activation-range: 8
+      # 重生锚
+      respawn_anchor:
+        # 是否会爆炸
+        explode: true
+        # 爆炸的能量
+        explosion-power: 5.0
+        # 是否会起火
+        explosion-fire: true
+        # 爆炸的效果，以下选项可选
+        # -BLOCK 未知
+        # -DESTORY 摧毁方块
+        # -BREAK 打破方块并掉落
+        # -NONE 不破坏方块
+        explosion-effect: BLOCK
+      # 沙子
+      sand:
+        # 关闭以启用刷沙，需要禁用safe-teleporting
+        fix-duping: true
+      # 幽匿尖啸体
+      sculk_shrieker:
+        # 使非自然生成的幽匿尖啸体可以生成监守者
+        can-summon-default: false
+      # 潜影盒
+      shulker_box:
+        # 是否允许在潜影盒里添加过叠加的物品，见Paper#4748
+        allow-oversized-stacks: false
+      # 告示牌
+      sign:
+        # 右键修改
+        right-click-edit: false
+        # 允许输入颜色代码
+        allow-colors: false
+      # 台阶
+      slab:
+        # 潜行时破坏单个台阶
+        break-individual-slabs-when-sneaking: false
+      # 刷怪笼
+      spawner:
+        # 是否可用红石信号停用
+        deactivate-by-redstone: false
+        # 修复刷怪笼不能正确的产生水生动物的问题
+        fix-mc-238526: false
+      # 海绵
+      sponge:
+        # 吸收
+        absorption:
+          # 吸水的块数
+          area: 64
+          # 吸水的半径
+          radius: 6
+        # 是否吸收岩浆
+        absorbs-lava: false
+      # 切石机
+      stonecutter:
+        # 站在上方每次受到的伤害，也会使怪物避免从其上方走过
+        damage: 0.0
+      # 海龟蛋
+      turtle_egg:
+        # 允许经验球打破海龟蛋
+        break-from-exp-orbs: true
+        # 允许掉落物打破海龟蛋
+        break-from-items: true
+        # 允许矿车打破海龟蛋
+        break-from-minecarts: true
+        # 是否无视mobGriefing游戏规则不被破坏
+        bypass-mob-griefing: false
+        # 海龟蛋破裂的几率
+        random-tick-crack-chance: 500
+        # 使缓落等级可以影响到踩坏蛋的高度，例如缓落1会比没有缓落可以从更高一格掉在蛋上而不会踩坏它
+        feather-fall-distance-affects-trampling: false
+      # 水
+      water:
+        # 产生无限水需要毗邻的源头数
+        infinite-required-sources: 2
+      # 附魔台
+      enchantment-table:
+        # 开启后可以将青金石存储在附魔台内
+        lapis-persists: false
+      # 潮涌核心
+      conduit:
+        # 作用半径
+        effect-distance: 16
+        # 对怪物的伤害
+        mob-damage:
+          # 半径
+          distance: 8.0
+          # 每次的伤害量
+          damage-amount: 4.0
+        # 有效的框架方块
+        valid-ring-blocks:
+        - minecraft:prismarine
+        - minecraft:prismarine_bricks
+        - minecraft:sea_lantern
+        - minecraft:dark_prismarine
+      # 炼药锅
+      cauldron:
+        # 每随机刻的填充几率
+        fill-chances:
+          # 雨
+          rain: 0.05
+          # 细雪
+          powder-snow: 0.1
+          # 滴水石锥
+          dripstone-water: 0.17578125
+          # 滴岩浆石锥
+          dripstone-lava: 0.05859375
+    # 工具
+    tools:
+      # 斧头
+      axe:
+        # 去皮
+        strippables:
+          # 云杉木
+          minecraft:spruce_log:
+            # 变为去皮的云杉木
+            into: minecraft:stripped_spruce_log
+            # 掉落物品列表
+            drops: {}
+          # 金合欢木
+          minecraft:acacia_log:
+            # 变为去皮的金合欢木
+            into: minecraft:stripped_acacia_log
+            # 掉落物品列表
+            drops: {}
+          # 深色橡木(六面)
+          minecraft:dark_oak_wood:
+            # 变为去皮的深色橡木(六面)
+            into: minecraft:stripped_dark_oak_wood
+            # 掉落物品列表
+            drops: {}
+          # 金合欢木(六面)
+          minecraft:acacia_wood:
+            # 变为去皮的金合欢木(六面)
+            into: minecraft:stripped_acacia_wood
+            # 掉落物品列表
+            drops: {}
+          # 樱木
+          minecraft:cherry_log:
+            # 变为去皮的樱木
+            into: minecraft:stripped_cherry_log
+            # 掉落物品列表
+            drops: {}
+          # 诡异菌核
+          minecraft:warped_hyphae:
+            # 变为去皮的诡异菌核
+            into: minecraft:stripped_warped_hyphae
+            # 掉落物品列表
+            drops: {}
+          # 云杉木(六面)
+          minecraft:spruce_wood:
+            # 变为去皮的云杉木(六面)
+            into: minecraft:stripped_spruce_wood
+            # 掉落物品列表
+            drops: {}
+          # 白桦木
+          minecraft:birch_log:
+            # 变为去皮的白桦木
+            into: minecraft:stripped_birch_log
+            # 掉落物品列表
+            drops: {}
+          # 诡异菌柄
+          minecraft:warped_stem:
+            # 变为去皮的诡异菌柄
+            into: minecraft:stripped_warped_stem
+            # 掉落物品列表
+            drops: {}
+          # 樱木(六面)
+          minecraft:cherry_wood:
+            # 变为去皮的樱木(六面)
+            into: minecraft:stripped_cherry_wood
+            # 掉落物品列表
+            drops: {}
+          # 红树木
+          minecraft:mangrove_log:
+            # 变为去皮的红树木
+            into: minecraft:stripped_mangrove_log
+            # 掉落物品列表
+            drops: {}
+          # 白桦木(六面)
+          minecraft:birch_wood:
+            # 变为去皮的白桦木(六面)
+            into: minecraft:stripped_birch_wood
+            # 掉落物品列表
+            drops: {}
+          # 深色橡木
+          minecraft:dark_oak_log:
+            # 变为去皮的深色橡木
+            into: minecraft:stripped_dark_oak_log
+            # 掉落物品列表
+            drops: {}
+          # 橡木(六面)
+          minecraft:oak_wood:
+            # 变为去皮的橡木(六面)
+            into: minecraft:stripped_oak_wood
+            # 掉落物品列表
+            drops: {}
+          # 橡木
+          minecraft:oak_log:
+            # 变为去皮的橡木
+            into: minecraft:stripped_oak_log
+            # 掉落物品列表
+            drops: {}
+          # 红树木(六面)
+          minecraft:mangrove_wood:
+            # 变为去皮的红树木(六面)
+            into: minecraft:stripped_mangrove_wood
+            # 掉落物品列表
+            drops: {}
+          # 绯红菌核
+          minecraft:crimson_hyphae:
+            # 变为去皮的绯红菌核
+            into: minecraft:stripped_crimson_hyphae
+            # 掉落物品列表
+            drops: {}
+          # 竹块
+          minecraft:bamboo_block:
+            # 变为去皮的竹块
+            into: minecraft:stripped_bamboo_block
+            # 掉落物品列表
+            drops: {}
+          # 丛林木(六面)
+          minecraft:jungle_wood:
+            # 变为去皮的丛林木(六面)
+            into: minecraft:stripped_jungle_wood
+            # 掉落物品列表
+            drops: {}
+          # 丛林木
+          minecraft:jungle_log:
+            # 变为去皮的丛林木
+            into: minecraft:stripped_jungle_log
+            # 掉落物品列表
+            drops: {}
+          # 绯红菌柄
+          minecraft:crimson_stem:
+            # 变为去皮的绯红菌柄
+            into: minecraft:stripped_crimson_stem
+            # 掉落物品列表
+            drops: {}
+        # 除蜡
+        waxables:
+          # 涂蜡氧化切制铜楼梯
+          minecraft:waxed_oxidized_cut_copper_stairs:
+            # 变为氧化切制铜楼梯
+            into: minecraft:oxidized_cut_copper_stairs
+            # 掉落物品列表
+            drops: {}
+          # 涂蜡风化切制铜楼梯
+          minecraft:waxed_weathered_cut_copper_stairs:
+            # 变为风化切制铜楼梯
+            into: minecraft:weathered_cut_copper_stairs
+            # 掉落物品���表
+            drops: {}
+          # 涂蜡裸露切制铜台阶
+          minecraft:waxed_exposed_cut_copper_slab:
+            # 变为裸露切制铜台阶
+            into: minecraft:exposed_cut_copper_slab
+            # 掉落物品列表
+            drops: {}
+          # 涂蜡切制铜台阶
+          minecraft:waxed_cut_copper_slab:
+            # 变为切制铜台阶
+            into: minecraft:cut_copper_slab
+            # 掉落物品列表
+            drops: {}
+          # 涂蜡铜块
+          minecraft:waxed_copper_block:
+            # 变为铜块
+            into: minecraft:copper_block
+            # 掉落物品列表
+            drops: {}
+          # 涂蜡氧化铜块
+          minecraft:waxed_oxidized_copper:
+            # 变为氧化铜块
+            into: minecraft:oxidized_copper
+            # 掉落物品列表
+            drops: {}
+          # 涂蜡风化铜块
+          minecraft:waxed_weathered_copper:
+            # 变为风化铜块
+            into: minecraft:weathered_copper
+            # 掉落物品列表
+            drops: {}
+          # 涂蜡氧化切制铜块
+          minecraft:waxed_oxidized_cut_copper:
+            # 变为氧化切制铜块
+            into: minecraft:oxidized_cut_copper
+            # 掉落物品列表
+            drops: {}
+          # 涂蜡风化切制铜块
+          minecraft:waxed_weathered_cut_copper:
+            # 变为风化切制铜块
+            into: minecraft:weathered_cut_copper
+            # 掉落物品列表
+            drops: {}
+          # 涂蜡裸露切制铜楼梯
+          minecraft:waxed_exposed_cut_copper_stairs:
+            # 变为涂蜡切制铜楼梯
+            into: minecraft:exposed_cut_copper_stairs
+            # 掉落物品列表
+            drops: {}
+          # 涂蜡氧化切制铜台阶
+          minecraft:waxed_oxidized_cut_copper_slab:
+            # 变为氧化切制铜台阶
+            into: minecraft:oxidized_cut_copper_slab
+            # 掉落物品列表
+            drops: {}
+          # 涂蜡风化切制铜台阶
+          minecraft:waxed_weathered_cut_copper_slab:
+            # 变为风化切制铜台阶
+            into: minecraft:weathered_cut_copper_slab
+            # 掉落物品列表
+            drops: {}
+          # 涂蜡裸露铜块
+          minecraft:waxed_exposed_copper:
+            # 变为裸露铜块
+            into: minecraft:exposed_copper
+            # 掉落物品列表
+            drops: {}
+          # 涂蜡切制铜楼梯
+          minecraft:waxed_cut_copper_stairs:
+            # 变为切制铜楼梯
+            into: minecraft:cut_copper_stairs
+            # 掉落物品列表
+            drops: {}
+          # 涂蜡切制铜块
+          minecraft:waxed_cut_copper:
+            # 变为切制铜块
+            into: minecraft:cut_copper
+            # 掉落物品列表
+            drops: {}
+          # 涂蜡裸露切制铜块
+          minecraft:waxed_exposed_cut_copper:
+            # 变为裸露切制铜块
+            into: minecraft:exposed_cut_copper
+            # 掉落物品列表
+            drops: {}
+        # 除锈
+        weatherables:
+          # 风化切制铜楼梯
+          minecraft:weathered_cut_copper_stairs:
+            # 变为裸露切制铜楼梯
+            into: minecraft:exposed_cut_copper_stairs
+            # 掉落物品列表
+            drops: {}
+          # 裸露铜块
+          minecraft:exposed_copper:
+            # 变为铜块
+            into: minecraft:copper_block
+            # 掉落物品列表
+            drops: {}
+          # 氧化切制铜块
+          minecraft:oxidized_cut_copper:
+            # 变为风化切制铜块
+            into: minecraft:weathered_cut_copper
+            # 掉落物品列表
+            drops: {}
+          # 裸露切制铜块
+          minecraft:exposed_cut_copper:
+            # 变为切制铜块
+            into: minecraft:cut_copper
+            # 掉落物品列表
+            drops: {}
+          # 风化铜块
+          minecraft:weathered_copper:
+            # 变为裸露铜块
+            into: minecraft:exposed_copper
+            # 掉落物品列表
+            drops: {}
+          # 裸露切制铜楼梯
+          minecraft:exposed_cut_copper_stairs:
+            # 变为切制铜楼梯
+            into: minecraft:cut_copper_stairs
+            # 掉落物品列表
+            drops: {}
+          # 氧化铜块
+          minecraft:oxidized_copper:
+            # 变为风化铜块
+            into: minecraft:weathered_copper
+            # 掉落物品列表
+            drops: {}
+          # 氧化切制铜楼梯
+          minecraft:oxidized_cut_copper_stairs:
+            # 变为切制铜楼梯
+            into: minecraft:weathered_cut_copper_stairs
+            # 掉落物品列表
+            drops: {}
+          # 裸露切制铜台阶
+          minecraft:exposed_cut_copper_slab:
+            # 变为切制铜台阶
+            into: minecraft:cut_copper_slab
+            # 掉落物品列表
+            drops: {}
+          # 风化切制铜块
+          minecraft:weathered_cut_copper:
+            # 变为裸露切制铜块
+            into: minecraft:exposed_cut_copper
+            # 掉落物品列表
+            drops: {}
+          # 氧化切制铜台阶
+          minecraft:oxidized_cut_copper_slab:
+            # 变为风化切制铜台阶
+            into: minecraft:weathered_cut_copper_slab
+            # 掉落物品列表
+            drops: {}
+          # 风化切制铜台阶
+          minecraft:weathered_cut_copper_slab:
+            # 变为裸露切制铜台阶
+            into: minecraft:exposed_cut_copper_slab
+            # 掉落物品列表
+            drops: {}
+      # 锄头
+      hoe:
+        # 耕地
+        tillables:
+          # 草方块
+          minecraft:grass_block:
+            # 需要的情况，air_above为上方有空气，always为总是
+            condition: air_above
+            # 掉落物品列表
+            drops: {}
+            # 变为耕地
+            into: minecraft:farmland
+          # 泥土
+          minecraft:dirt:
+            # 需要的情况
+            condition: air_above
+            # 掉落物品列表
+            drops: {}
+            # 变为耕地
+            into: minecraft:farmland
+          # 缠根泥土
+          minecraft:rooted_dirt:
+            # 需要的情况
+            condition: always
+            # 掉落物品列表
+            drops:
+              minecraft:hanging_roots: 1.0 # 垂根
+            # 变为泥土
+            into: minecraft:dirt
+          # 草径
+          minecraft:dirt_path:
+            # 需要的情况
+            condition: air_above
+            # 掉落物品列表
+            drops: {}
+            # 变为耕地
+            into: minecraft:farmland
+          # 砂土
+          minecraft:coarse_dirt:
+            # 需要的情况
+            condition: air_above
+            # 掉落物品列表
+            drops: {}
+            # 变为泥土
+            into: minecraft:dirt
+        # 是否补种作物
+        replant-crops: false
+        # 是否补种地狱疣
+        replant-nether-warts: false
+    # 骑乘设置
+    ridable-settings:
+      # 小型化生物可以骑
+      babies-are-ridable: true
+      # 未驯服的可驯服生物可以骑
+      untamed-tamables-are-ridable: true
+      # 骑乘是是否无限夜视
+      use-night-vision: false
+      # 使用DISMOUNTS_UNDERWATER标签或使用ridable-in-water选项
+      use-dismounts-underwater-tag: true
+    # 生物
+    mobs:
+      # 悦灵
+      allay:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 拾起物品的NBT白名单
+        respect-nbt: []
+      # 美西螈
+      axolotl:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 14.0
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 蝙蝠
+      bat:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 该生物被骑时能飞到的最大高度
+        ridable-max-y: 320.0
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 6.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 蜜蜂
+      bee:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 该生物被骑时能飞到的最大高度
+        ridable-max-y: 320.0
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 10.0
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 晚上会工作
+        can-work-at-night: false
+        # 下雨会工作
+        can-work-in-rain: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+        # 蜜蜂蜇人后是否死亡
+        dies-after-sting: true
+      # 烈焰人
+      blaze:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被���脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 该生物被骑时能飞到的最大高度
+        ridable-max-y: 320.0
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 20.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: true
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 骆驼
+      camel:
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health:
+            # 最小
+            min: 32.0
+            # 最大
+            max: 32.0
+          # 跳跃力量
+          jump_strength:
+            # 最小
+            min: 0.42
+            # 最大
+            max: 0.42
+          # 速度
+          movement_speed:
+            # 最小
+            min: 0.09
+            # 最大
+            max: 0.09
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+      # 猫
+      cat:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 10.0
+        # 尝试生成猫的时间间隔，以随机刻计
+        spawn-delay: 1200
+        # 如果在此范围内找到一只猫，则不再试图生成一只
+        scan-range-for-other-cats:
+          # 沼泽小屋
+          swamp-hut: 16
+          # 村庄
+          village: 48
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 默认项圈颜色
+        default-collar-color: RED
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 洞穴蜘蛛
+      cave_spider:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 12.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 坤
+      chicken:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 4.0
+        # 鸡是否会反击
+        retaliate: false
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 鳕鱼
+      cod:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 3.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 牛
+      cow:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 10.0
+        # 喂多少蘑菇可以使牛变哞菇
+        feed-mushrooms-for-mooshroom: 0
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 自然生成有攻击性的动物
+        naturally-aggressive-to-players:
+          # 几率百分比
+          chance: 0.0
+          # 每次造成的伤害
+          damage: 2.0
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 苦力怕
+      creeper:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可使用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 20.0
+        # 自然生成闪电苦力怕的几率
+        naturally-charged-chance: 0.0
+        # 允许破坏地形
+        allow-griefing: true
+        # 是否无视mobGriefing游戏规则
+        bypass-mob-griefing: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 杀死时爆炸
+        explode-when-killed: false
+        # 血量越低，爆炸是否越弱
+        health-impacts-explosion: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+        # 当玩家戴着怪物对应的头时，怪物的探测范围变更的比例
+        head-visibility-percent: 0.5
+        # 在被点燃的时候绕着玩家转圈圈
+        encircle-target: false
+      # 海豚
+      dolphin:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 口水
+        spit:
+          # 攻击间隔，以随机刻计
+          cooldown: 20
+          # 弹射速度
+          speed: 1.0
+          # 每次的伤害
+          damage: 2.0
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 10.0
+        # 禁用海豚寻宝
+        disable-treasure-searching: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 自然生成有攻击性的动物几率百分比
+        naturally-aggressive-to-players-chance: 0.0
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 驴
+      donkey:
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: false
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health:
+            # 最小
+            min: 15.0
+            # 最大
+            max: 30.0
+          # 跳跃力量
+          jump_strength:
+            # 最小
+            min: 0.5
+            # 最大
+            max: 0.5
+          # 速度
+          movement_speed:
+            # 最小
+            min: 0.175
+            # 最大
+            max: 0.175
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 溺尸
+      drowned:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 20.0
+          # 产生增援的几率
+          spawn_reinforcements: 0.1
+        # 骑士
+        jockey:
+          # 只有小僵尸会成为骑士
+          only-babies: true
+          # 骑士出现概率
+          chance: 0.05
+          # 尝试生成在现有的鸡哥身上
+          try-existing-chickens: true
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 可以破坏门
+        can-break-doors: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 远古守卫者
+      elder_guardian:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 80.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 末影龙
+      ender_dragon:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 该生物被骑时能飞到的最大高度
+        ridable-max-y: 320.0
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 200.0
+        # 每次死亡都和第一次一样掉落大量经验
+        always-drop-full-exp: false
+        # 是否无视mobGriefing游戏规则
+        bypass-mob-griefing: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 末影龙是否可以驾驶载具
+        can-ride-vehicles: false
+      # 末影人
+      enderman:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 40.0
+        # 允许拿起方块
+        allow-griefing: true
+        # 允许与拿着的方块一起被刷新掉
+        can-despawn-with-held-block: false
+        # 是否无视mobGriefing游戏规则
+        bypass-mob-griefing: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: true
+        # 对末影螨有仇恨
+        aggressive-towards-endermites: true
+        # 只对玩家扔的珍珠生成的末影螨有仇恨
+        aggressive-towards-endermites-only-spawned-by-player-thrown-ender-pearls: false
+        # 设为true将使小黑无视盯着它的戴着龙头的玩家
+        ignore-players-wearing-dragon-head: false
+        # 使小黑不再对盯着它的玩家产生仇恨
+        disable-player-stare-aggression: false
+        # 小黑是否受到投掷物伤害
+        ignore-projectiles: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 末影螨
+      endermite:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 8.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 召唤师
+      evoker:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 24.0
+        # 是否无视mobGriefing游戏规则
+        bypass-mob-griefing: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 狐狸
+      fox:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 10.0
+        # 喂食白色/橙色郁金香可改变狐狸外观(雪/默认)
+        tulips-change-type: false
+        # 繁殖冷却
+        breeding-…delay-ticks: 6000
+        # 是否无视mobGriefing游戏规则
+        bypass-mob-griefing: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 青蛙
+      frog:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 骑乘时可以跳的高度
+        ridable-jump-height: 0.65
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+      # 恶魂
+      ghast:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 该生物被骑时能飞到的最大高度
+        ridable-max-y: 320.0
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 10.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 巨人僵尸
+      giant:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 移动速度
+        movement-speed: 0.5
+        # 攻击伤害
+        attack-damage: 50.0
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 100.0
+        # 不用跳跃可以走上的方块数(类似玩家走台阶)
+        step-height: 2.0
+        # 跳跃高度的倍数，1.0会让巨人跳到自己腰的位置
+        jump-height: 1.0
+        # 拥有AI
+        have-ai: false
+        # 是否也有与玩家敌对的AI
+        have-hostile-ai: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 发光鱿鱼
+      glow_squid:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 10.0
+        # 让鱿鱼飞¡
+        can-fly: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+        # 改变你的鱿鱼颜色!需要在客户端安装https://modrinth.com/mod/rainglow
+        # 以下选项可用
+        # - rainbow 红色、橙色、黄色、绿色、蓝色、靛蓝和紫色
+        # - all_colors 蓝色、红色、绿色、粉红色、黄色、橙色、靛蓝色、紫色、白色、灰色和黑色
+        # - monochrome 白色、灰色和黑色
+        # - vanilla 原版的蓝色
+        # - trans_pride 蓝色、白色和粉红色
+        # - lesbian_pride 红色、橙色、白色、粉红色和紫色
+        # - bi_pride 蓝色、粉红色和紫色
+        # - pan_pride 粉红色、黄色和蓝色
+        # - ace_pride 黑色、灰色、白色和紫色
+        # - aro_pride 黑色、灰色、白色和绿色
+        # - genderfluid 蓝色、粉红色、紫色、白色和黑色
+        # - enby_pride：黄色、白色、黑色和紫色
+        rainglow-mode: rainbow
+      # 山羊
+      goat:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 10.0
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 守卫者
+      guardian:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 30.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 疣猪兽
+      hoglin:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 40.0
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 马
+      horse:
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: false
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health:
+            # 最小
+            min: 15.0
+            # 最大
+            max: 30.0
+          # 跳跃力量
+          jump_strength:
+            # 最小
+            min: 0.4
+            # 最大
+            max: 1.0
+          # 速度
+          movement_speed:
+            # 最小
+            min: 0.1125
+            # 最大
+            max: 0.3375
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 尸壳
+      husk:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 20.0
+          # 产生增援的几率
+          spawn_reinforcements: 0.1
+        # 骑士
+        jockey:
+          # 只有小僵尸会成为骑士
+          only-babies: true
+          # 骑士出现概率
+          chance: 0.05
+          # 尝试生成在现有的鸡哥身上
+          try-existing-chickens: true
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 幻术师
+      illusioner:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 移动速度
+        movement-speed: 0.5
+        # 仇恨半径
+        follow-range: 18.0
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 32.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 铁傀儡
+      iron_golem:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 是否会游泳
+        can-swim: false
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 100.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 当铁傀儡生气的时候，给它一朵虞美人可以让它平静下来
+        poppy-calms-anger: false
+        # 当铁傀儡生气的时候，修复它可以让它平静下来
+        healing-calms-anger: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 羊驼
+      llama:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health:
+            # 最小
+            min: 15.0
+            # 最大
+            max: 30.0
+          # 跳跃力量
+          jump_strength:
+            # 最小
+            min: 0.5
+            # 最大
+            max: 0.5
+          # 速度
+          movement_speed:
+            # 最小
+            min: 0.175
+            # 最大
+            max: 0.175
+        # 繁殖冷却，以随机刻计
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 是否启用骆驼商队功能
+        join-caravans: true
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 岩浆怪
+      magma_cube:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: size * size
+          # 每次的攻击伤害
+          attack_damage: size
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 哞菇
+      mooshroom:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 10.0
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 骡
+      mule:
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: false
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health:
+            # 最小
+            min: 15.0
+            # 最大
+            max: 30.0
+          # 跳跃力量
+          jump_strength:
+            # 最小
+            min: 0.5
+            # 最大
+            max: 0.5
+          # 速度
+          movement_speed:
+            # 最大
+            min: 0.175
+            # 最小
+            max: 0.175
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 豹猫
+      ocelot:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 10.0
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 熊猫
+      panda:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 20.0
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 鹦鹉
+      parrot:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 该生物被骑时能飞到的最大高度
+        ridable-max-y: 320.0
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 6.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 是否可繁殖
+        can-breed: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 幻翼
+      phantom:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 该生物被骑时能飞到的最大高度
+        ridable-max-y: 320.0
+        # 火焰
+        flames:
+          # 每次造成的伤害
+          damage: 1.0
+          # 着火时间
+          fire-time: 8
+        # 允许破坏地形
+        allow-griefing: false
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: '20.0'
+          # 冲撞造成的伤害
+          attack_damage: 6 + size
+        # 末影水晶寻找幻翼的范围
+        attacked-by-crystal-range: 0.0
+        # 末影水晶每次对幻翼造成的伤害
+        attacked-by-crystal-damage: 1.0
+        # 幻翼躲末影水晶的范围
+        orbit-crystal-radius: 0.0
+        # 生成
+        spawn:
+          # 天空最低亮度
+          min-sky-darkness: 5
+          # 只在63层以上刷新
+          only-above-sea-level: true
+          # 只在玩家头上有可见天空时生成
+          only-with-visible-sky: true
+          # 难度必须大于该值和0之间的随机数才会生成
+          local-difficulty-chance: 3.0
+          # 每次尝试生成的数量
+          per-attempt:
+            # 最小
+            min: 1
+            # 最大，-1为以世界难度为基础
+            max: -1
+        # 幻翼将在什么亮度下燃烧
+        burn-in-light: 0
+        # 是否在太阳下燃烧
+        burn-in-daylight: true
+        # 幻翼是否不攻击手持火把的玩家
+        ignore-players-with-torch: false
+        # 是否加速向玩家猛扑过去
+        flames-on-swoop: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+        # 幻翼大小
+        size:
+          # 最小
+          min: 0
+          # 最大
+          max: 0
+      # 猪
+      pig:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 10.0
+        # 开启后，可通过潜行右击来移除一只猪身上的鞍
+        give-saddle-back: false
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 猪灵
+      piglin:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 16.0
+        # 是否无视mobGriefing游戏规则
+        bypass-mob-griefing: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 允许根据世界难度改变从传送门方块中产生猪灵的几率
+        # 参见 https://github.com/PurpurMC/Purpur/blob/61fc0a557fc0eedececd63d44d43ce6431bc23bb/patches/server/0167-Piglin-portal-spawn-modifier.patch
+        portal-spawn-modifier: 2000
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+        # 当玩家戴着怪物对应的头时，怪物的探测范围变更的比例
+        head-visibility-percent: 0.5
+      # 猪灵战士
+      piglin_brute:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 50.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 劫掠者
+      pillager:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 24.0
+        # 是否无视mobGriefing游戏规则
+        bypass-mob-griefing: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 北极熊
+      polar_bear:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 30.0
+        # 可以引诱/喂食北极熊并使其繁殖的物品列表
+        breedable-item: ''
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 河豚
+      pufferfish:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 3.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 兔子
+      rabbit:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # ���乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 3.0
+        # 自然生成名为Toast的兔子的几率(0.0-1.0)
+        spawn-toast-chance: 0.0
+        # 自然生成杀手兔的几率(0.0-1.0)
+        spawn-killer-rabbit-chance: 0.0
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 是否无视mobGriefing游戏规则
+        bypass-mob-griefing: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 劫掠兽
+      ravager:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 100.0
+        # 是否无视mobGriefing游戏规则
+        bypass-mob-griefing: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 可以破坏的方块
+        griefable-blocks:
+        - minecraft:oak_leaves # 橡树叶
+        - minecraft:spruce_leaves # 云杉叶
+        - minecraft:birch_leaves # 白桦叶
+        - minecraft:jungle_leaves # 丛林叶
+        - minecraft:acacia_leaves # 金合欢叶
+        - minecraft:dark_oak_leaves # 深橡树叶
+        - minecraft:beetroots # 甜菜
+        - minecraft:carrots # 萝卜
+        - minecraft:potatoes # 土豆
+        - minecraft:wheat # 小麦
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 鲑鱼
+      salmon:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 3.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 羊
+      sheep:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 8.0
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 是否无视mobGriefing游戏规则吃草
+        bypass-mob-griefing: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+        # 剪名叫jeb_的羊的毛是否会掉落颜色随机的羊毛
+        jeb-shear-random-color: false
+      # 潜影贝
+      shulker:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 30.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 从子弹中生成
+        spawn-from-bullet:
+          # 基础几率
+          base-chance: 1.0
+          # 潜影贝壳是否必须打开
+          require-open-lid: true
+          # 检测附近潜影贝的范围
+          nearby-range: 8.0
+          # 计算用子弹生成潜影贝的几率，留空以总是生成
+          nearby-equation: (nearby - 1) / 5.0
+          # 生成的潜影贝是否拥有随机颜色
+          random-color: false
+        # 是否可用颜料修改颜色
+        change-color-with-dye: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 蠹虫
+      silverfish:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 8.0
+        # 是否无视mobGriefing游戏规则
+        bypass-mob-griefing: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 骷髅
+      skeleton:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 20.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+        # 当玩家戴着怪物对应的头时，怪物的探测范围变更的比例
+        head-visibility-percent: 0.5
+        # 拿几个凋零玫瑰喂小白会使其变成凋零骷髅
+        feed-wither-roses: 0
+        # 小白射箭的精度，数值越低射击越精准，三种难度的数字分别为1,2,3
+        bow-accuracy: 14 - difficulty * 4
+      # 骷髅马
+      skeleton_horse:
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 是否会游泳
+        can-swim: false
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health:
+            # 最小
+            min: 15.0
+            # 最大
+            max: 15.0
+          # 跳跃力量
+          jump_strength:
+            # 最小
+            min: 0.4
+            # 最大
+            max: 1.0
+          # 速度
+          movement_speed:
+            # 最小
+            min: 0.2
+            # 最大
+            max: 0.2
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 史莱姆
+      slime:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: size * size
+          # 攻击伤害
+          attack_damage: size
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 雪傀儡
+      snow_golem:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 雪傀儡被骑时是否留下痕迹
+        leave-trail-when-ridden: false
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 4.0
+        # 剪头时是否掉落南瓜
+        drop-pumpkin-when-sheared: true
+        # 南瓜可被添加回去
+        pumpkin-can-be-added-back: false
+        # 最小射击间隔，以随机刻计
+        min-shoot-interval-ticks: 20
+        # 最大射击间隔，以随机刻计
+        max-shoot-interval-ticks: 20
+        # 雪球的精准度
+        snow-ball-modifier: 10.0
+        # 雪球的攻击距离
+        attack-distance: 1.25
+        # 是否无视mobGriefing游戏规则
+        bypass-mob-griefing: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: true
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 嗅探兽
+      sniffer:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 14.0
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+      # 鱿鱼
+      squid:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 10.0
+        # 使该生物免疫实体激活范围(spigot.yml)
+        immune-to-EAR: true
+        # 阻止鱿鱼浮在水面上
+        water-offset-check: 0.0
+        # 鱿鱼是否会飞
+        can-fly: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 蜘蛛
+      spider:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 16.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 流浪者
+      stray:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 20.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 炽足兽
+      strider:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 20.0
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 开启后，可通过潜行右击来移除一只炽足兽身上的鞍
+        give-saddle-back: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: true
+        # 死亡时是否总是掉落经验
+        always-drop-exp: false
+      # 蝌蚪
+      tadpole:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+      # 行商羊驼
+      trader_llama:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health:
+            # 最小
+            min: 15.0
+            # 最大
+            max: 30.0
+          # 跳跃力量
+          jump_strength:
+            # 最小
+            min: 0.5
+            # 最大
+            max: 0.5
+          # 速度
+          movement_speed:
+            # 最小
+            min: 0.175
+            # 最大
+            max: 0.175
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 热带鱼
+      tropical_fish:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 3.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 海龟
+      turtle:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 30.0
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 恼鬼
+      vex:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 该生物被骑时能飞到的最大高度
+        ridable-max-y: 320.0
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 14.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 村民
+      villager:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 20.0
+        # 手持绿宝石块时吸引村民跟随
+        follow-emerald-blocks: false
+        # 可以被拴绳拴起
+        can-be-leashed: false
+        # 可以繁殖
+        can-breed: true
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 牧师是否种植地狱疣
+        clerics-farm-warts: false
+        # 牧师是否会将地狱疣给其他村民
+        cleric-wart-farmers-throw-warts-at-villagers: true
+        # 是否无视mobGriefing游戏规则
+        bypass-mob-griefing: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 允许与村民交易
+        allow-trading: true
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+        # 购买最低需要的物品数，为Paper对MC-163962的补丁
+        # 参https://bugs.mojang.com/browse/MC-163962
+        minimum-demand: 0
+        # 禁止村民移动
+        lobotomize:
+          # 是否启用
+          enabled: false
+          # 检测村民是否会移动的间隔，以随机刻计
+          check-interval: 100
+        # 是否显示交易的物品
+        display-trade-item: true
+        # 生成铁傀儡
+        spawn-iron-golem:
+          # 生成前搜索的范围范围
+          radius: 0
+          # 范围内铁傀儡的最大数值
+          limit: 0
+      # 卫道士
+      vindicator:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 24.0
+        # 命名
+        johnny:
+          # 自然生成名为Johnny的卫道士的几率
+          spawn-chance: 0.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 流浪商人
+      wandering_trader:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 20.0
+        # 手持绿宝石块时吸引奸商跟随
+        follow-emerald-blocks: false
+        # 是否可被拴绳拴住
+        can-be-leashed: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 是否允许交易
+        allow-trading: true
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 监守者
+      warden:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+      # 女巫
+      witch:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 26.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 凋零
+      wither:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 该生物被骑时能飞到的最大高度
+        ridable-max-y: 320.0
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 300.0
+        # 每次再生获得的生命值
+        health-regen-amount: 1.0
+        # 每隔多久再生一次，以随机刻计
+        health-regen-delay: 20
+        # 是否无视mobGriefing游戏规则
+        bypass-mob-griefing: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 是否可以骑乘载具
+        can-ride-vehicles: false
+        # 爆炸半径
+        explosion-radius: 1.0
+        # 播放生成音效
+        play-spawn-sound: true
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 凋零骷髅
+      wither_skeleton:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 20.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 狼
+      wolf:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 8.0
+        # 项圈的默认颜色
+        default-collar-color: RED
+        # 牛奶是否使发狂的狼平静
+        milk-cures-rabid-wolves: true
+        # 自然生成发狂的狼的几率
+        spawn-rabid-chance: 0.0
+        # 繁殖冷却
+        breeding-delay-ticks: 6000
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 僵尸疣猪兽
+      zoglin:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 40.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 僵尸
+      zombie:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 20.0
+          # 产生增援的几率
+          spawn_reinforcements: 0.1
+        # 骑士
+        jockey:
+          # 只有小僵尸会成为骑士
+          only-babies: true
+          # 骑士出现概率
+          chance: 0.05
+          # 尝试生成在现有的鸡哥身上
+          try-existing-chickens: true
+        # 是否主动攻击村民
+        aggressive-towards-villager-when-lagging: true
+        # 是否无视mobGriefing游戏规则
+        bypass-mob-griefing: false
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+        # 当玩家戴着怪物对应的头时，怪物的探测范围变更的比例
+        head-visibility-percent: 0.5
+      # 僵尸马
+      zombie_horse:
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: false
+        # 是否会游泳
+        can-swim: false
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health:
+            # 最小
+            min: 15.0
+            # 最大
+            max: 15.0
+          # 跳跃力量
+          jump_strength:
+            # 最小
+            min: 0.4
+            # 最大
+            max: 1.0
+          # 速度
+          movement_speed:
+            # 最小
+            min: 0.2
+            # 最大
+            max: 0.2
+        # 生成骷髅马陷阱时生成僵尸马而非骷髅马的几率(0.0-1.0)
+        spawn-chance: 0.0
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 僵尸村民
+      zombie_villager:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 20.0
+          # 产生增援的几率
+          spawn_reinforcements: 0.1
+        # 骑士
+        jockey:
+          # 只有小僵尸会成为骑士
+          only-babies: true
+          # 骑士出现概率
+          chance: 0.05
+          # 尝试生成在现有的鸡哥身上
+          try-existing-chickens: true
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 治愈需要的时间，以随机刻计
+        curing_time:
+          # 最小
+          min: 3600
+          # 最大
+          max: 6000
+        # 虚弱+屁屁治愈
+        cure:
+          # 是否启用
+          enabled: true
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+      # 僵尸猪灵
+      zombified_piglin:
+        # 是否可骑乘
+        ridable: false
+        # 骑乘时入水是否不会被挣脱
+        ridable-in-water: true
+        # 骑乘时是否可用方向键控制
+        controllable: true
+        # 属性
+        attributes:
+          # 最大生命值
+          max_health: 20.0
+          # 产生增援的几率
+          spawn_reinforcements: 0.1
+        # 骑士
+        jockey:
+          # 只有小僵尸会成为骑士
+          only-babies: true
+          # 骑士出现概率
+          chance: 0.05
+          # 尝试生成在现有的鸡哥身上
+          try-existing-chickens: true
+        # 僵尸猪灵被玩家激怒(但没有被杀死)时是否掉落经验
+        count-as-player-kill-when-angry: true
+        # 沾水是否受到伤害
+        takes-damage-from-water: false
+        # 死亡时总是掉落经验
+        always-drop-exp: false
+    # 饥饿设置
+    hunger:
+      # 饥饿时每次造成的伤害
+      starvation-damage: 1.0
+    # 游戏机制
+    gameplay-mechanics:
+      # 盔甲架
+      armorstand:
+        # 设置盔甲架不跳跃可以走上的方块数，适用于使用盔甲架作为车辆的插件
+        step-height: 0.0
+        # 当盔甲架物品被命名时放置是否显示名称
+        set-name-visible-when-placing-with-custom-name: true
+        # 当盔甲架物品拥有Name Tag时放置是否显示名称
+        fix-nametags: false
+        # 盔甲架是否可以移动
+        can-movement-tick: true
+        # 盔甲架是否可在水中移动
+        can-move-in-water: true
+        # 盔甲架在水中移动时是否可以越过栅栏
+        can-move-in-water-over-fence: true
+        # 是否使盔甲架手臂在放置时可见
+        place-with-arms-visible: false
+      # 箭
+      arrow:
+        # 移动是否可以重置被刷新时间，关闭可以防止箭因为某些原因不会消失
+        movement-resets-despawn-counter: true
+      # 开启后精修将会优先修复损坏最严重的物品
+      use-better-mending: false
+      # 开启后在创造模式驯服生物成功率为100%
+      always-tame-in-creative: false
+      # 船
+      boat:
+        # 船是否在陆地上弹出玩家
+        eject-players-on-land: false
+        # 船上的玩家是否会受摔落伤害
+        do-fall-damage: false
+      # 开启后当生物被挤死时不掉落物品
+      disable-drops-on-cramming-death: false
+      # 实体是否可以使用传送门
+      entities-can-use-portals: true
+      # 开启后可以捡起物品的生物将无视mobGriefing游戏规则捡起物品
+      entities-pick-up-loot-bypass-mob-griefing: false
+      # 开启后火球将无视mobGriefing游戏规则破坏地形
+      fireballs-bypass-mob-griefing: false
+      # 开启以对网关施加传送限制。这会广播EntityTeleportHinderedEvent事件，使乘客/载具传送失败时可以重试
+      impose-teleport-restrictions-on-gateways: false
+      # 是否允许喝牛奶解除凶兆
+      milk-cures-bad-omen: true
+      # 牛奶是否会解除正面buff
+      milk-clears-beneficial-effects: true
+      # 开启后即使音符盒上面有方块也会发出声音
+      note-block-ignore-above: false
+      # 是否使命名的功能方块在被挖掘后保持其命名
+      persistent-tileentity-names-and-lore: false
+      # 是否使命名的实体方块在被挖掘后保持其命名
+      persistent-droppable-entity-display-names: true
+      # 开启后，投掷物将无视mobGriefing游戏规则
+      projectiles-bypass-mob-griefing: false
+      # 流体方块是否蔓延
+      tick-fluids: true
+      # 受到失明药水效果影响时，怪物的失明程度
+      entity-blindness-multiplier: 1.0
+      # 忠诚三叉戟射入虚空返回使用者手里的层高，0以上会禁用该功能
+      trident-loyalty-void-return-height: 0.0
+      # 受到虚空伤害的层高
+      void-damage-height: -64.0
+      # 每次虚空造成的伤害
+      void-damage-dealt: 4.0
+      # 掠夺的冷却时间，以秒计
+      raid-cooldown-seconds: 0
+      # 动物繁殖的冷却，以秒计
+      animal-breeding-cooldown-seconds: 0
+      # 生物是否会无视铁轨，在铁轨上行走
+      mobs-ignore-rails: false
+      # 睡过觉是否停雨
+      rain-stops-after-sleep: true
+      # 睡过觉是否停雷暴
+      thunder-stops-after-sleep: true
+      # 被玩家打到的怪物死亡后多久计入击杀数
+      mob-last-hurt-by-player-time: 100
+      # 日夜交替的时间，以随机刻计
+      daylight-cycle-ticks:
+        # 白天
+        daytime: 12000
+        # 晚上
+        nighttime: 12000
+      # 溺亡
+      drowning:
+        # 用完十个气泡需要的时间，以随机刻计
+        air-ticks: 300
+        # 每次造成伤害的间隔，以随机刻计
+        ticks-per-damage: 20
+        # 每次造成的伤害
+        damage-from-drowning: 2.0
+      # 鞘翅
+      elytra:
+        # 鞘翅的耐久每秒消耗多少
+        damage-per-second: 1
+        # 如果飞行速度比该值快，耐久消耗速度将增加，0为禁用
+        damage-multiplied-by-speed: 0.0
+        # 是否忽略耐久附魔
+        ignore-unbreaking: false
+        # 每次加速消耗多少耐久
+        damage-per-boost:
+          # 烟花
+          firework: 0
+          # 激流三叉戟
+          trident: 0
+        # 是否会感受到动能
+        kinetic-damage: true
+      # 实体经过该时间后消失，与玩家互动会刷新计时，0为禁用
+      entity-lifespan: 0
+      # 生成惯用左手实体的几率(0.0-1.0)
+      entity-left-handed-chance: 0.05
+      # 是否禁止为ExplosionRadius属性设定负值
+      clamp-explosion-radius: true
+      # 无限弓
+      infinity-bow:
+        # 身上不带着箭是否可以射出箭
+        works-without-arrows: false
+        # 普通箭是否可无限
+        normal-arrows: true
+        # 光灵箭是否可无限
+        spectral-arrows: false
+        # 药水箭是否可无限
+        tipped-arrows: false
+      # 物品
+      item:
+        # 免疫某种伤害的物品列表
+        immune:
+          # 仙人掌
+          cactus: []
+          # 爆炸
+          explosion: []
+          # 火焰
+          fire: []
+          # 雷电
+          lightning: []
+        # 剪刀
+        shears:
+          # 拿着剪刀冲刺时受到伤害
+          damage-if-sprinting: false
+          # 在水中是否不受到伤害
+          ignore-in-water: false
+          # 在岩浆中是否不受到伤害
+          ignore-in-lava: false
+          # 每次受到的伤害
+          sprinting-damage: 1.0
+        # 末影珍珠
+        ender-pearl:
+          # 使用一次受到的伤害
+          damage: 5.0
+          # 使用后冷却时间，以随机刻计
+          cooldown: 20
+          # 创造模式冷却时间
+          creative-cooldown: 20
+          # 末影螨生成的概率
+          endermite-spawn-chance: 0.05
+        # 发光浆果
+        glow_berries:
+          # 吃了发光浆果玩家发光的时间，以随机刻计
+          eat-glow-duration: 0
+        # 潜影盒
+        shulker_box:
+          # 当潜影盒被摧毁(不是挖掘)时是否掉落里面的物品
+          drop-contents-when-destroyed: true
+        # 指南针
+        compass:
+          # 手持时是否显示/compass同款BOSS条
+          holding-shows-bossbar: false
+        # 雪球
+        snowball:
+          # 是否可以熄灭
+          extinguish:
+            # 火
+            fire: false
+            # 蜡烛
+            candles: false
+            # 营火
+            campfires: false
+      # 效果影响实体的倍数
+      mob-effects:
+        # 再生每次恢复多少血
+        health-regen-amount: 1.0
+        # 中毒剩下的最小生命值
+        minimal-health-poison-amount: 1.0
+        # 中毒每次掉多少血
+        poison-degeneration-amount: 1.0
+        # 凋零每次掉多少血
+        wither-degeneration-amount: 1.0
+        # 饥饿每随机刻损失多少饥饿值
+        hunger-exhaustion-amount: 0.005
+        # 饱和每随机刻恢复多少饥饿值
+        saturation-regen-amount: 1.0
+      # 生物生成控制选项
+      mob-spawning:
+        # 村庄的猫
+        village-cats: default
+        # 掠夺队
+        raid-patrols: default
+        # 幻翼
+        phantoms: default
+        # 流浪商人
+        wandering-traders: default
+        # 村庄袭击
+        village-sieges: default
+        # 生成生物时是否忽略创造玩家
+        ignore-creative-players: false
+      # 玩家
+      player:
+        # 下届合金赋予抗火属性
+        netherite-fire-resistance:
+          # 防火的持续时间
+          duration: 0
+          # 防火的等级
+          amplifier: 0
+          # 设置为true以使粒子在屏幕上不那么突兀（如信标效果）
+          ambient: false
+          # 是否显示粒子效果
+          show-particles: false
+          # 是否显示图标
+          show-icon: true
+        # 挂机超时(见server.properties)
+        idle-timeout:
+          # 挂机是否会被踢
+          kick-if-idle: true
+          # 挂机时是否会加载附近的实体
+          tick-nearby-entities: true
+          # 挂机玩家在睡觉时是否算为在线玩家
+          count-as-sleeping: false
+          # 是否在Tab列表中为挂机玩家添加设定的前后缀
+          update-tab-list: false
+          # 怪物是否攻击挂机玩家
+          mobs-target: true
+        # 控制玩家生成时无敌的时长，以随机刻计
+        spawn-invulnerable-ticks: 60
+        # 在接受并加载材质包时是否无敌
+        invulnerable-while-accepting-resource-pack: false
+        # 死亡时掉落多少经验值
+        exp-dropped-on-death:
+          # 这是计算公式，可用变量如下
+          # -expLevel 经验等级
+          # -expTotal 总经验
+          # -exp 经验
+          equation: expLevel * 7
+          # 最大掉落经验值
+          maximum: 100
+        # 在世界边界之外是否将你传送回出生点
+        teleport-if-outside-border: false
+        # 在下列天花板上受到伤害是否将你传送回出生点
+        teleport-on-nether-ceiling-damage: false
+        # 不死图腾在物品栏中是否生效
+        totem-of-undying-works-in-inventory: false
+        # 在地狱传送门里走到另外一个黑曜石上就可以重置传送冷却
+        # 在因为某些原因无法离开地狱门被困时可以通过该功能传送回原来的地方
+        fix-stuck-in-portal: false
+        # 创造模式是否空手一击必杀
+        one-punch-in-creative: false
+        # 周围有怪物是否允许睡觉
+        sleep-ignore-nearby-mobs: false
+        # 是否允许通过睡觉跳进夜晚
+        can-skip-night: true
+        # 暴击造成的伤害倍数
+        critical-damage-multiplier: 1.5
+        # 播放打嗝音效的延时
+        burp-delay: 10
+        # 玩家吃饱后是否播放打嗝音效
+        burp-when-full: false
+        # 地狱门传送所需的时间，以随机刻计
+        portal-wait-time: 80
+        # 创造模式下传送所需的时间，以随机刻计
+        creative-portal-wait-time: 1
+        # 在水中是否可以骑马
+        ridable-in-water: false
+        # 绑定诅咒
+        curse-of-binding:
+          # 在虚弱状态下可以移除该类装备
+          remove-with-weakness: false
+        # 潜行右击可以直接扣除经验条修补物品的最大经验值
+        shift-right-click-repairs-mending-points: 0
+        # 每隔多久可以捡起一个经验球，以随机刻计
+        exp-pickup-delay-ticks: 2
+        # 是否允许虚空交易
+        allow-void-trading: false
+      # 弹射物偏移量，越小越精准
+      projectile-offset:
+        # 弓
+        bow: 1.0
+        # 弩
+        crossbow: 1.0
+        # 蛋
+        egg: 1.0
+        # 末影珍珠
+        ender-pearl: 1.0
+        # 喷溅药水
+        throwable-potion: 1.0
+        # 三叉戟
+        trident: 1.0
+        # 雪球
+        snowball: 1.0
+      # 投掷物造成的伤害
+      projectile-damage:
+        # 雪球
+        snowball: -1
+      # 铲子可以将什么方块转换为草径
+      shovel-turns-block-to-grass-path:
+      - minecraft:coarse_dirt # 砂土
+      - minecraft:dirt # 泥土
+      - minecraft:grass_block # 草方块
+      - minecraft:mycelium # 菌丝
+      - minecraft:podzol # 灰化土
+      - minecraft:rooted_dirt # 缠根泥土
+      # 精准采集刷怪笼
+      # 需要purpur.drop.spawners和purpur.place.spawners权限
+      silk-touch:
+        # 是否启用
+        enabled: false
+        # 刷怪笼的名称
+        spawner-name: <reset><white>刷怪笼
+        # 采掘需要的最低精准采集附魔的等级
+        minimal-level: 1
+        # 物品的注释信息
+        spawner-lore:
+        - 生成 <mob>
+        # 附魔精准采集后可以采集刷怪笼的工具种类
+        tools:
+        - minecraft:iron_pickaxe # 铁镐
+        - minecraft:golden_pickaxe # 金镐
+        - minecraft:diamond_pickaxe # 钻镐
+        - minecraft:netherite_pickaxe # 下届合金镐
+      # 万圣节模式
+      halloween:
+        # 强制一直启用万圣节模式
+        force: false
+        # 僵尸/骷髅会在它的头上有一个南瓜灯/雕刻的南瓜的概率(0.0-1.0)
+        head-chance: 0.25
+      # 矿车
+      minecart:
+        # 最大速度
+        max-speed: 0.4
+        # 是否可以不在铁轨上放置
+        place-anywhere: false
+        # 充能铁轨
+        powered-rail:
+          # 每个充能铁轨带来的加速(不影响熔炉矿车)
+          boost-modifier: 0.06
+        # 不在铁轨上用方向键驾驶矿车
+        controllable:
+          # 是否启用
+          enabled: false
+          # 矿车不进行跳跃就可以爬上的方块高度
+          step-height: 1.0
+          # 在该种矿车上按跳跃键可以跳起的高度
+          hop-boost: 0.5
+          # 坐在该种矿车里是否受到摔落伤害
+          fall-damage: true
+          # 基础速度
+          base-speed: 0.1
+          # 特殊方块上的速度
+          block-speed:
+            grass_block: 0.3 # 草方块
+            stone: 0.5 # 石头

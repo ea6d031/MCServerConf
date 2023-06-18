@@ -1,0 +1,324 @@
+# 这是 Spigot 的主要配置文件。
+# 如您所见，有很多可以配置的选项。某些选项可能会影响游戏玩法，因此请谨慎使用，并确保在配置之前了解每个选项的作用。
+# 有关此文件中任何变量的引用，请参阅http://www.spigotmc.org/wiki/Spigot-configuration/ 的 Spigot Wiki 如果您需要有关配置的帮助或有任何与 Spigot 相关的问题，请在 Discord 加入我们的频道或者光临我们的论坛并留下帖子。
+# Discord: https://www.spigotmc.org/go/discord
+# 论坛: http://www.spigotmc.org/
+# 译自https://www.spigotmc.org/wiki/spigot-configuration/
+
+# 命令
+commands:
+  # 在日志里记录使用的命令
+  log: true
+  # 在输入多少字母后允许使用自动补全
+  tab-complete: 0
+  # 自动补全时可以看到命名空间格式的命令
+  send-namespaced: true
+  # 在大量使用以下命令时不会被踢出
+  spam-exclusions:
+  - /skill
+  # 是否将命令方块输出记录到控制台
+  silent-commandblock-console: false
+  # 禁用 Bukkit 对以下命令的实现使其恢复原版特性
+  replace-commands:
+  - setblock
+  - summon
+  - testforblock
+  - tellraw
+# 消息
+messages:
+  # 没有白名单被踢
+  whitelist: 你没有被该服务器列入白名单!
+  # 未知命令
+  unknown-command: 未知的命令. 输入 "/help" 以查看帮助.
+  # 服务器已满
+  server-full: 服务器塞不下啦!
+  # 客户端版本过低
+  outdated-client: 客户端版本过旧! 请使用 {0}
+  # 客户端版本过高
+  outdated-server: 客户端版本过高! 请使用 {0}
+  # 服务器重启
+  restart: 服务器正在重启，客官稍等
+# 设置
+settings:
+  # 无响应多久后自动生成报告并重启，以秒计
+  timeout-time: 60
+  # 崩溃时自动使用指定脚本重启
+  restart-on-crash: true
+  # 重启脚本的位置
+  restart-script: ./start.sh
+  # 是否开启 Bungeecord 模式
+  bungeecord: false
+  # netty 的线程数
+  netty-threads: 4
+  # 发送到客户端服务器列表的玩家列表最大值
+  sample-count: 12
+  # 定期随机服务器处理玩家数据包的优先级，以随机刻计
+  player-shuffle: 0
+  # 在"usercache.json"缓存多少玩家的信息
+  user-cache-size: 1000
+  # 仅在服务器关闭时保存玩家缓存
+  save-user-cache-on-stop-only: false
+  # 控制玩家异常移动检测，增加可以减少回弹，但是可能被滥用
+  moved-wrongly-threshold: 0.0625
+  # 控制玩家最大速度值，减少虽然可以防止滥用，但是会影响tnt大炮之类的效果。
+  moved-too-quickly-multiplier: 10.0
+  # 属性设置
+  attribute:
+    # 最大生命值
+    maxHealth:
+      max: 2048.0
+    # 最大移动速度
+    movementSpeed:
+      max: 2048.0
+    # 最大攻击伤害
+    attackDamage:
+      max: 2048.0
+  # 记录更多日志
+  debug: false
+  # 记录村民的死亡
+  log-villager-deaths: true
+  # 记录命名生物的死亡
+  log-named-deaths: true
+# 成就
+advancements:
+  # 禁止保存成就
+  disable-saving: false
+  # 禁止保存的成就的列表
+  disabled:
+  - minecraft:story/disabled
+# 玩家信息
+players:
+  # 禁止保存玩家信息
+  disable-saving: false
+# 世界设置
+world-settings:
+  # 默认设置
+  default:
+    是否在旧版本不含y<0的世界里生成新的y<0区块
+    below-zero-generation-in-existing-chunks: true
+    # 生长速度百分比
+    growth:
+      # 仙人掌
+      cactus-modifier: 100
+      # 甘蔗
+      cane-modifier: 100
+      # 西瓜
+      melon-modifier: 100
+      # 蘑菇
+      mushroom-modifier: 100
+      # 南瓜
+      pumpkin-modifier: 100
+      # 树苗
+      sapling-modifier: 100
+      # 甜菜
+      beetroot-modifier: 100
+      # 萝卜
+      carrot-modifier: 100
+      # 土豆
+      potato-modifier: 100
+      # 火把花
+      torchflower-modifier: 100
+      # 小麦
+      wheat-modifier: 100
+      # 地狱疣
+      netherwart-modifier: 100
+      # 藤蔓
+      vine-modifier: 100
+      # 可可豆
+      cocoa-modifier: 100
+      # 竹子
+      bamboo-modifier: 100
+      # 甜浆果
+      sweetberry-modifier: 100
+      # 海带
+      kelp-modifier: 100
+      # 扭曲藤
+      twistingvines-modifier: 100
+      # 缠怨藤
+      weepingvines-modifier: 100
+      # 洞穴藤蔓
+      cavevines-modifier: 100
+      # 发光浆果
+      glowberry-modifier: 100
+    # 合并掉落物的范围，以格计
+    merge-radius:
+      # 物品
+      item: 2.5
+      # 经验
+      exp: 3.0
+    # 视距
+    view-distance: default
+    # 模拟距离
+    simulation-distance: default
+    # 怪物生成范围，以区块计
+    mob-spawn-range: 8
+    # 掉落物清除时间，以随机刻计
+    item-despawn-rate: 6000
+    # 实体活动距离，在该距离之外的实体将会减少活动
+    entity-activation-range:
+      # 动物
+      animals: 32
+      # 怪物
+      monsters: 32
+      # 劫掠者
+      raiders: 48
+      # 其它
+      misc: 16
+      # 水生动物
+      water: 16
+      # 村民
+      villagers: 32
+      # 幻翼
+      flying-monsters: 32
+      # 从不活跃状态唤醒
+      wake-up-inactive:
+        # 每随机刻最多多少动物
+        animals-max-per-tick: 4
+        # 每多少随机刻唤醒一次
+        animals-every: 1200
+        # 每次唤醒最长持续多久
+        animals-for: 100
+        # 每随机刻最多多少怪物
+        monsters-max-per-tick: 8
+        # 每多少随机刻唤醒一次
+        monsters-every: 400
+        每次唤醒最长持续多久
+        monsters-for: 100
+        # 每次最多唤醒多少村民
+        villagers-max-per-tick: 4
+        # 每多少随机刻唤醒一次
+        villagers-every: 600
+        # 每次唤醒持续多久
+        villagers-for: 100
+        # 每次最多唤醒多少幻翼
+        flying-monsters-max-per-tick: 8
+        # 每多少随机刻唤醒一次
+        flying-monsters-every: 200
+        # 每次唤醒持续多久
+        flying-monsters-for: 100
+      # 村民工作后免疫多久优化
+      villagers-work-immunity-after: 100
+      # 每次免疫持续多久
+      villagers-work-immunity-for: 20
+      # 在恐慌时村民被唤醒
+      villagers-active-for-panic: true
+      # 当村民在不活动状态时是否正常工作
+      tick-inactive-villagers: true
+      # 实体激活忽略观察者
+      ignore-spectators: false
+    # 实体可见范围，以格计
+    entity-tracking-range:
+      # 玩家
+      players: 48
+      # 动物
+      animals: 48
+      # 怪物
+      monsters: 48
+      # 掉落物，展示框，文字之类
+      misc: 32
+      # 实体方块
+      display: 128
+      # 其它
+      other: 64
+    # 每多少随机刻运算指定项一次
+    ticks-per:
+      # 漏斗间传输
+      hopper-transfer: 8
+      # 漏斗尝试传输物品的频率
+      hopper-check: 1
+    # 漏斗每次传输多少物品
+    hopper-amount: 1
+    # 漏斗是否可以保持区块加载
+    hopper-can-load-chunks: false
+    # 箭消失的时间，以随机刻计
+    arrow-despawn-rate: 1200
+    # 三叉戟消失的时间，以随机刻计
+    trident-despawn-rate: 1200
+    # 僵尸主动攻击村民
+    zombie-aggressive-towards-villager: true
+    # 开启后刷怪笼刷出的怪物没有AI
+    nerf-spawner-mobs: false
+    # 禁用后不再在下界传送门生成猪灵，以禁止跨世界猪灵塔
+    enable-zombie-pigmen-portal-spawns: true
+    # 龙死亡后声音传递的范围
+    dragon-death-sound-radius: 0
+    # 凋零生成声音传递的范围
+    wither-spawn-sound-radius: 0
+    # 末地门声音传递的范围
+    end-portal-sound-radius: 0
+    # 村庄生成位置的种子
+    seed-village: 10387312
+    # 沙漠
+    seed-desert: 14357617
+    # 冰屋
+    seed-igloo: 14357618
+    # 丛林
+    seed-jungle: 14357619
+    # 沼泽
+    seed-swamp: 14357620
+    # 海底遗迹
+    seed-monument: 10387313
+    # 沉船
+    seed-shipwreck: 165745295
+    # 海洋
+    seed-ocean: 14357621
+    # 前哨站
+    seed-outpost: 165745296
+    # 末地城
+    seed-endcity: 10387313
+    # 史莱姆区块
+    seed-slime: 987234911
+    # 地狱
+    seed-nether: 30084232
+    # 丛林府邸
+    seed-mansion: 10387319
+    # 骨化石
+    seed-fossil: 14357921
+    # 折越门
+    seed-portal: 34222645
+    # 古城
+    seed-ancientcity: 20083232
+    # 埋藏的宝藏
+    seed-buriedtreasure: 10387320
+    # 废弃矿井
+    seed-mineshaft: default
+    # 末地要塞
+    seed-stronghold: default
+    # 饥饿值消耗
+    hunger:
+      # 边走边跳
+      jump-walk-exhaustion: 0.05
+      # 边跑边跳
+      jump-sprint-exhaustion: 0.2
+      # 击剑
+      combat-exhaustion: 0.1
+      # 回血
+      regen-exhaustion: 6.0
+      # 游泳
+      swim-multiplier: 0.01
+      # 跑步
+      sprint-multiplier: 0.1
+      # 其它
+      other-multiplier: 0.0
+    # 每随机刻最多允许多少TNT爆炸
+    max-tnt-per-tick: 100
+    # 钓鱼上钩频率百分比
+    hanging-tick-frequency: 100
+    # 单个物体在单个随机刻中运算所消耗的最大时间，以毫秒计
+    max-tick-time:
+      # 功能性方块
+      tile: 50
+      # 实体
+      entity: 50
+    # 打雷的几率
+    thunder-chance: 100000
+    # 是否在控制台显示每个世界的详细配置
+    verbose: false
+# 配置文件版本信息，请勿修改
+config-version: 12
+# 玩家统计信息
+stats:
+  # 禁止保存统计信息
+  disable-saving: false
+  # 控制某些量强制在统计信息里显示某些数值
+  forced-stats: {}
