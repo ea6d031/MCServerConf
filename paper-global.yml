@@ -218,7 +218,7 @@ timings:
   verbose: true
 # 不受支持的设置
 unsupported-settings:
-  # 允许砂轮修复物品
+  # 允许砂轮超堆叠物品
   allow-grindstone-overstacking: false
   # 允许制作无头活塞
   allow-headless-pistons: false
